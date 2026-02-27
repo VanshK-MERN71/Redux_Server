@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import connectDB from './config/db.js';
 import userRoute from './routes/UserRoute.js';
+const PORT = process.env.PORT || 5000;
 
 dotenv.config();
 const app = express();
@@ -14,16 +15,13 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express.json());        
+app.use(express.urlencoded({ extended: true }));
 
-app.get("/api/auth", (req, res) => {
-  res.json({ message: 'Api is working' });
-});
-app.use("/api", userRoute);
 
-const PORT = process.env.PORT || 5000;
-app.get("/", (req, res) => {
+app.get(["/", "/api", "/api/auth"], (req, res) => {
   res.send("Server is running");
 });
+app.use("/api/auth", userRoute);
 
 const startServer = async () => {
   try {
