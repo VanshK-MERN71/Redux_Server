@@ -11,7 +11,7 @@ const app = express();
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://redux-frontend-brown.vercel.app",
+  "https://redux-frontend-pearl.vercel.app",
 ];
 
 app.use(
