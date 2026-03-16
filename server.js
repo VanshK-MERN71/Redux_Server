@@ -23,10 +23,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-app.get(["/", "/api", "/api/auth"], (req, res) => {
+app.get(["/", "/auth"], (req, res) => {
   res.send("Server is running");
 });
-app.use("/api/auth", userRoute);
+app.use("/auth", userRoute);
 
 const startServer = async () => {
   try {
