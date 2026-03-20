@@ -7,9 +7,9 @@ export const registerUser = async (req, res)=>{
     const name = normalizeString(req.body?.name);
     const email = normalizeString(req.body?.email).toLowerCase();
     const password = normalizeString(req.body?.password);
-
+    
+    console.log(name,email,password)
     if (!name || !email || !password) {
-        console.log(name,email,password)
         return res.status(400).json({ message: "Name, email and password are required" });
     }
     if (name.length < 3) {
